@@ -41,19 +41,13 @@ def repos_size(request):
     chart = pygal.Gauge()
     chart.range = [0, 20]
     
-    
-    
 
     for repo_dict in repo_list:
         chart_svg_as_datauri = chart.render_data_uri()
         value = repo_dict["size"]
         label = repo_dict["name"]
         chart.add(label, value)
-    
-    print(chart_svg_as_datauri)
-    
-    
-        
+     
 
     context = {
         'github_repos' : repo_list,
@@ -63,15 +57,5 @@ def repos_size(request):
     return render(request, 'pages/repos_sizes.html', context)
 
 
-def languages_used(request):
-    print('viewing languages used')
 
-    response = requests.get("https://api.github.com/users/jadonhoang/repos")
-    repo_list = response.json()
-    
-    context = {
-        
-    }
-
-    return render(request, 'pages/languages_used.html', context)
 
