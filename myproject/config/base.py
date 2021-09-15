@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: On production, set SECRET_KEY env variable to override
 SECRET_KEY = 'django-insecure-19sevlfc+r160&$jzl_=+k&*%ep4vf!vxr&^os)sc!1&je%19w'
 
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
