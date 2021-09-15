@@ -6,17 +6,20 @@
 
 
 {% block content %}
+<h1 class="display-5">Welcome to Jadon Hoang's Github Statistics!</h1>
 <div class="jumbotron">
-  <h1 class="display-4">My Site</h1>
-  <p class="lead">This is a simple Jumbotron component from Bootstrap 4.</p>
+  <p>This is a webpage showing my statistics on Github. Currently, 
+     there are only a few as I just started using Github but there will sure be a lot more
+     in the future!
+  </p>
   <hr class="my-4">
-  <p>Edit this to include your content.</p>
+  <p>Learn more about my repos</p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">Learn more</a>
+    <a class="btn btn-primary btn-lg" href="{% url 'all_repos' %}" role="button">List of my repos</a>
+    <a class="btn btn-primary btn-lg" href="{% url 'repos_sizes' %}" role="button">Repos graphed by size</a>
+    <a class="btn btn-primary btn-lg" href="{% url 'languages_used' %}" role="button">Languages used</a>
   </p>
 </div>
-
-<p>More stuff. {{ example_context_variable }}.</p>
 
 {% endblock content %}
 

@@ -1,14 +1,23 @@
 {% extends "base.html" %}
 
+
+
 {% block title %}
     My Site - About
 {% endblock title %}
 
 
+
 {% block content %}
 
-<p>Learn more about my site...</p>
+
+<h1><strong>Repos by Size</strong></h1>
+<embed type="image/svg+xml" src="{{ rendered_chart_svg_as_datauri|safe}}" />
+
 
 {% endblock content %}
+
+
+
 
 
