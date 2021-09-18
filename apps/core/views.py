@@ -43,12 +43,12 @@ def repos_size(request):
     
 
     for repo_dict in repo_list:
-        chart_svg_as_datauri = chart.render_data_uri()
         value = repo_dict["size"]
         label = repo_dict["name"]
         chart.add(label, value)
      
-
+    chart_svg_as_datauri = chart.render_data_uri()
+    
     context = {
         'github_repos' : repo_list,
         "rendered_chart_svg_as_datauri" : chart_svg_as_datauri,
