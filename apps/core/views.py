@@ -1,23 +1,18 @@
 from django.shortcuts import render
+from django.contrib import admin
+from .models import DashboardPanel
 import requests
 import pygal
+import json
 
-# Two example views. Change or delete as necessary.
+
 def home(request):
     print('viewing home')
 
     context = {
-        'example_context_variable': 'Change me.',
     }
 
     return render(request, 'pages/home.html', context)
-
-def about(request):
-    print('viewing about')
-    context = {
-    }
-
-    return render(request, 'pages/about.html', context)
 
 
 def allrepos(request):
@@ -55,6 +50,47 @@ def repos_size(request):
     }
 
     return render(request, 'pages/repos_sizes.html', context)
+
+
+def view_panels(request):
+    dboard_panels = DashboardPanel.objects.all()
+    
+    context = {
+        "all_panels" : dboard_panels,
+    }
+
+    return render(request, "pages/home_panels.html", context)
+
+
+def panel_details(request, panel_id):
+    panel = DashboardPanel.objects.get(id=panel_id)
+
+    repo_name = panel.repo_name
+
+    response = requests.get("https://api.github.com/repos/jadonhoang/" + repo_name + "/languages")
+    languages = response.json()
+
+    
+    chart = pygal.Pie()
+
+    for language in languages:
+        value = languages[language]
+        label = language
+        chart.add(label, value)
+
+    chart_svg = chart.render_data_uri()
+
+    context = {
+        "panels" : panel,
+        "rendered_chart_svg" : chart_svg,
+        "repo_name" : repo_name,
+    }
+
+    return render(request, "pages/panel_details.html", context)
+
+
+
+
 
 
 

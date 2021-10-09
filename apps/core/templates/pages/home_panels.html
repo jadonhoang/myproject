@@ -22,9 +22,18 @@
   </p>
 </div>
 
-
+<div class="row">
+  {% for panel in all_panels %}
+      <div class="col-md">
+        <div class="shadow border" style="text-align: center;">
+          <p><strong><h4>{{panel.repo_name}}</h4></strong></p>
+          <p>{{panel.description}}</p>
+          <a href="/panel_details/{{panel.id}}">Click for repo details</a>
+        </div>
+      </div>
+  {% endfor %}
+</div>
 
 
 {% endblock content %}
-
 
