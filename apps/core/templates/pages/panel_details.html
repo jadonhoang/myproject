@@ -1,27 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-<html>
-    <body>
 
-        <h1>{{panels.github_username}}</h1>
-        <p>{{panels.description}}</p>
+    <h1>{{panels.github_username}}</h1>
+    <p>{{panels.description}}</p>
 
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <embed type="image/svg+xml" src="{{ rendered_chart_svg|safe}}"/>
-                </div>
-                <div class="col-md-4">
-                    <a class="btn btn-warning" href="https://github.com/jadonhoang/{{repo_name}}">View</a>
-                </div>
-            
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <embed type="image/svg+xml" src="{{ rendered_chart_svg|safe}}"/>
             </div>
+            <div class="col-md-3">
+                <a class="btn btn-warning" href="https://github.com/jadonhoang/{{repo_name}}">View on Github</a>
+            </div>
+        
         </div>
+    </div>
 
-    </body>
-</html>
 {% endblock content %}
 
 
