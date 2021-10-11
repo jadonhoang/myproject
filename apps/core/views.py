@@ -53,6 +53,7 @@ def repos_size(request):
 
 
 def view_panels(request):
+    print('viewing panels')
     dboard_panels = DashboardPanel.objects.all()
     
     context = {
