@@ -71,8 +71,10 @@ def panel_details(request, panel_id):
     response = requests.get("https://api.github.com/repos/jadonhoang/" + repo_name + "/languages")
     languages = response.json()
 
-    
-    chart = pygal.Pie()
+    if(panel.panel_type == "piechart"):
+        chart = pygal.Pie()
+    elif(panel.panel_type == "barchart"):
+        chart = pygal.Bar()
 
     for language in languages:
         value = languages[language]
